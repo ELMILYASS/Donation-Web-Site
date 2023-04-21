@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.js": "/PFA/static/js/main.23e54a3e.js",
+    "static/media/shopify_plugin_hero_image-768x614.png": "/PFA/static/media/shopify_plugin_hero_image-768x614.6657d26dec2c85a502b1.png",
+    "static/media/istockphoto-1175986554-170667a-removebg-preview.png": "/PFA/static/media/istockphoto-1175986554-170667a-removebg-preview.95f1ada8fafeef600295.png",
+    "static/media/1_E1FajNaNq1IXkXAOaF5lCw-removebg-preview.png": "/PFA/static/media/1_E1FajNaNq1IXkXAOaF5lCw-removebg-preview.623fca2c7c0098e06827.png",
+    "static/media/Untitledfinl_page-0001__1_-removebg-preview.png": "/PFA/static/media/Untitledfinl_page-0001__1_-removebg-preview.55177bce01818bbf4b76.png",
+    "static/media/footer.png": "/PFA/static/media/footer.44cd98077da27f87d6b1.png",
+    "index.html": "/PFA/index.html",
+    "main.23e54a3e.js.map": "/PFA/static/js/main.23e54a3e.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.23e54a3e.js"
+  ]
+}
