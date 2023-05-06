@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import Input from "./Input";
 import { BiHide, BiEdit } from "react-icons/bi";
-import {
-  AiOutlineUser,
-  AiFillLock,
-  AiOutlineMail,
-  AiFillPhone,
-} from "react-icons/ai";
+
+import { AiOutlineUser, AiOutlineMail, AiFillPhone } from "react-icons/ai";
 import { FaRegAddressCard } from "react-icons/fa";
+import { createContext } from "react";
+export const Context = createContext();
 function UserInfo() {
   let [inputs, setInputs] = useState({
     fname: "",
@@ -27,37 +26,12 @@ function UserInfo() {
     password: true,
   });
 
-  function changeInfo(event) {
-    setInputs((prev) => {
-      return {
-        ...prev,
-        [event.target.name]: event.target.value,
-      };
-    });
-  }
-  function allowEdit(event) {
-    let target = event.target;
-    if (event.target.tagName === "path") {
-      target = target.parentNode;
-    }
-
-    target = target.previousElementSibling;
-
-    setEditInputs((prev) => {
-      return {
-        ...prev,
-        [target.name]: false,
-      };
-    });
-    target.focus();
-  }
   useEffect(() => {
     window.addEventListener("click", (event) => {
-      //   console.log(event.target.className.baseVal);
       let target = event.target;
 
       let array = ["svg", "path", "INPUT"];
-      
+
       if (!array.includes(target.tagName)) {
         setEditInputs((prev) => {
           return {
@@ -75,111 +49,84 @@ function UserInfo() {
   }, []);
   return (
     <div className="sign Up component">
-      <form action="">
-        <div className="input">
-          <div className="field">
-            <AiOutlineUser className="icon" />
-
-            <input
+      <Context.Provider value={[inputs, setInputs, editInputs, setEditInputs]}>
+        <form action="">
+          <div className="input">
+            <Input
               type="text"
               id="fname"
               name="fname"
-              placeholder="First name"
+              label="First name"
               value={inputs.fname}
-              onChange={changeInfo}
               disabled={editInputs.fname}
+              icon={<AiOutlineUser className="icon" />}
             />
-            <BiEdit className="edit" title="fname" onClick={allowEdit} />
-          </div>
-          <div className="field">
-            <AiOutlineUser className="icon" />
 
-            <input
+            <Input
               type="text"
               id="lname"
               name="lname"
-              placeholder="Last name"
+              label="Last name"
               value={inputs.lname}
-              onChange={changeInfo}
               disabled={editInputs.lname}
+              icon={<AiOutlineUser className="icon" />}
             />
-            <BiEdit className="edit" onClick={allowEdit} />
           </div>
-        </div>
 
-        <div className="input">
-          <div className="field">
-            <AiOutlineUser className="icon" />
-
-            <input
+          <div className="input">
+            <Input
               type="text"
               id="uname"
               name="uname"
-              placeholder="Username"
+              label="Username"
               value={inputs.uname}
-              onChange={changeInfo}
               disabled={editInputs.uname}
+              icon={<AiOutlineUser className="icon" />}
             />
-            <BiEdit className="edit" onClick={allowEdit} />
-          </div>
-          <div className="field">
-            <AiFillPhone className="icon" />
 
-            <input
+            <Input
               type="text"
               id="phone"
               name="phone"
-              placeholder="Phone"
+              label="Phone"
               value={inputs.phone}
-              onChange={changeInfo}
               disabled={editInputs.phone}
+              icon={<AiFillPhone className="icon" />}
             />
-            <BiEdit className="edit" onClick={allowEdit} />
           </div>
-        </div>
-        <div className="field">
-          <FaRegAddressCard className="icon" />
 
-          <input
+          <Input
             type="text"
             id="address"
             name="address"
-            placeholder="Address"
+            label="Address"
             value={inputs.address}
-            onChange={changeInfo}
             disabled={editInputs.address}
+            icon={<FaRegAddressCard className="icon" />}
           />
-          <BiEdit className="edit" onClick={allowEdit} />
-        </div>
-        <div className="field">
-          <AiOutlineMail className="icon" />
 
-          <input
+          <Input
             type="text"
             id="email"
             name="email"
-            placeholder="Email"
+            label="Email"
             value={inputs.email}
-            onChange={changeInfo}
             disabled={editInputs.email}
+            icon={<AiOutlineMail className="icon" />}
           />
-          <BiEdit className="edit" onClick={allowEdit} />
-        </div>
-        <div className="field ">
-          <input
+          <Input
             type="password"
             id="password"
             name="password"
-            placeholder="password"
+            label="password"
             value={inputs.password}
-            onChange={changeInfo}
             disabled={editInputs.password}
+            icon={<BiHide className="icon" />}
           />
-          <BiEdit className="edit" onClick={allowEdit} />
-          <BiHide className="icon" />
-        </div>
-        <input type="submit" value="Submit" />
-      </form>
+
+          <input type="submit" value="Submit" />
+        </form>
+      </Context.Provider>
     </div>
   );
 }

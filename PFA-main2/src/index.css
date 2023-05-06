@@ -47,7 +47,7 @@
 
 /* //ilyas */
 
-/* SignIN signUP */ 
+/* SignIN signUP */
 
 * {
   padding: 0;
@@ -311,7 +311,6 @@ height: 100vh !important; */
   background-color: var(--main-color);
   color: white;
 }
-
 
 /*Donate Now */
 
@@ -694,7 +693,6 @@ height: 100vh !important; */
 
 /* Profile */
 
-
 .profile {
   position: relative;
 }
@@ -765,7 +763,10 @@ height: 100vh !important; */
   color: var(--main-color);
   cursor: pointer;
 }
-
+.profile .sign .inputText {
+  position: relative;
+  margin-top: 7px;
+}
 
 /* Header + footer */
 
