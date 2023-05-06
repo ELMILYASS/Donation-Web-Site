@@ -1,0 +1,799 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.clip {
+  clip-path: polygon(
+    100% 100%,
+    100% 0,
+    0 0,
+    0% 100%,
+    11% 100%,
+    26% 90%,
+    39% 100%,
+    52% 89%,
+    64% 100%,
+    76% 89%,
+    88% 100%
+  );
+}
+
+.footer1 {
+  background-image: url("../../public/footer.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.rotatee {
+  transform: rotateY(180deg);
+}
+.bgtesti {
+  background: url("../../public/bgtesti.png");
+  background-position: center;
+  background-repeat: round;
+  background-size: contain;
+}
+
+.donationcard::before {
+  content: "Taken";
+  position: absolute;
+  padding: 2px 8px;
+  top: -8%;
+  color: white;
+  font-size: 13px;
+  border-radius: 10px;
+  background-color: #4d8c95;
+}
+
+/* //ilyas */
+
+/* SignIN signUP */ 
+
+* {
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  --transition: 3s;
+  --transition-normal: 0.3s;
+  --main-color: #2f4858;
+  --green: #86d4c1;
+  --secondary-color: #b2f8d0;
+}
+
+.Home {
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.cercle {
+  position: absolute;
+  width: 350vh;
+  height: 350vh;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  top: 0;
+  left: 0;
+  transform: translate(-70%, -20%);
+  transition: var(--transition);
+}
+
+@media (max-width: 992px) {
+  .cercle {
+    left: -25% !important;
+  }
+}
+
+.Home .component {
+  z-index: 2;
+  width: 50%;
+  transition-delay: 0.5s;
+  color: var(--main-color);
+}
+.Home input {
+  color: var(--main-color);
+}
+.Home input:focus {
+  border: 1px solid var(--secondary-color);
+  outline: none;
+}
+
+.signInNow {
+  position: absolute;
+  right: 0;
+  transform: translateX(100%);
+  transition: var(--transition);
+  color: white;
+  margin-bottom: 100px;
+}
+
+.now {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.now .info {
+  margin-bottom: 20px;
+}
+.now .info h3 {
+  margin-bottom: 5px;
+}
+
+.now .info p {
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+.now .info button {
+  background-color: transparent;
+  outline: none;
+  border: 2px solid white;
+  color: white;
+  padding: 10px;
+  border-radius: 15px;
+  position: relative;
+  transition: 0.3s;
+}
+.now .info button::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  outline: none;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  border: 2px solid var(--secondary-color);
+  transform: translate(-50%, -50%);
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 15px;
+  z-index: -1;
+}
+.now .info button:hover::after {
+  width: 102%;
+  height: 102%;
+}
+.now .info button:hover {
+  color: var(--secondary-color);
+}
+.now img {
+  max-width: 100%;
+  width: 500px;
+
+  animation: top-bottom infinite var(--transition) linear alternate;
+}
+@keyframes top-bottom {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+.signUpNow {
+  transform: translateX(0);
+  transition: var(--transition);
+  color: white;
+}
+
+.sign.Up {
+  position: absolute;
+  left: 0;
+  transform: translateX(-150%);
+  transition: var(--transition);
+}
+
+.sign.In {
+  transform: translateX(0);
+}
+
+.sign input[type="submit"] {
+  background-color: var(--secondary-color);
+  border: none;
+  transition: 0.3s;
+}
+
+.sign input[type="submit"]:hover {
+  background-color: #86d4c1;
+}
+.sign {
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.sign h1 {
+  margin: 20px;
+}
+.sign form {
+  width: 65%;
+}
+.sign form input {
+  height: 40px;
+  width: 100%;
+  font-size: 16px;
+  padding: 0 30px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  transition: 0.3s;
+}
+.sign.Up .input {
+  display: flex;
+  justify-content: space-between;
+}
+.sign.Up .input .field {
+  width: 45%;
+}
+.sign .field {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.sign .field .icon {
+  color: gray;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(50%, -50%);
+}
+
+@media (max-width: 768px) {
+  .Home {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .Home .component {
+    width: 100%;
+    height: 50%;
+    padding: 0;
+  }
+  .Home .now {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .Home .signInNow {
+    align-items: flex-start;
+  }
+  .Home .now button {
+    background-color: var(--secondary-color) !important;
+  }
+  .sign.Up {
+    top: 26%;
+  }
+  .cercle {
+    /* left: -20%!important;
+width: 200vh !important;
+height: 100vh !important; */
+    display: none;
+  }
+  .Home .now .info {
+    max-width: 100%;
+  }
+  .Home .now img {
+    width: 250px;
+  }
+  .now .info button::after {
+    display: none;
+  }
+  .now .info button:hover {
+    color: white;
+  }
+}
+
+.sign.In .social .icon {
+  font-size: 42px;
+  padding: 12px;
+
+  border-radius: 50%;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+  margin: 4px;
+  transition: 0.3s;
+}
+
+.sign.In p {
+  margin: 20px 0 5px;
+}
+
+.sign.In .social .icon:hover {
+  background-color: var(--main-color);
+  color: white;
+}
+
+
+/*Donate Now */
+
+.DonateNow {
+  position: relative;
+}
+.DonateNow .choose {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 250px;
+}
+.DonateNow::after {
+  position: absolute;
+  content: "";
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: rgba(213, 247, 231, 0.2);
+}
+
+.DonateNow .section {
+  display: flex;
+}
+
+.DonateNow .section .image {
+  width: 50%;
+
+  text-align: center;
+  color: #2f4858;
+  font-size: 17px;
+}
+.DonateNow .section .image img {
+  max-width: 100%;
+}
+.DonateNow .section .Donate {
+  width: 50%;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .header img {
+    height: 40vh;
+  }
+  .DonateNow .section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .DonateNow .section .Donate,
+  .DonateNow .section .image {
+    width: 100%;
+  }
+  .DonateNow .section .Donate {
+    margin-top: 50px;
+  }
+  .DonateNow .form .fieldForm .input {
+    width: 100% !important;
+  }
+}
+.DonateNow .section .field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.DonateNow .Donate .select-item {
+  outline: none;
+  font-size: 22px;
+  border: none;
+  background: #86d4c1;
+  border-radius: 15px;
+  height: 45px;
+  z-index: 1;
+  width: 220px;
+  position: relative;
+  color: var(--main-color);
+  transition: var(--transition-normal);
+}
+.DonateNow .Donate .select-item .icon {
+  position: absolute;
+  right: 10px;
+  color: #d5f7e7;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.DonateNow .select {
+  text-align: center;
+  background-color: var(--secondary-color);
+  width: 220px;
+  border-radius: 15px;
+  top: 11%;
+  display: none;
+  position: absolute;
+  padding: 5px;
+}
+.Donate .select:not(.type) {
+  z-index: 1;
+}
+.DonateNow .line {
+  background-color: var(--main-color);
+  height: 2px;
+  width: 60%;
+}
+.DonateNow .select-item:hover {
+  background-color: var(--main-color);
+  color: white;
+}
+.DonateNow .select div {
+  padding: 10px 0;
+  color: var(--main-color);
+  position: relative;
+  font-size: 18px;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+.DonateNow .select .icon {
+  position: absolute;
+  left: 20%;
+}
+
+.DonateNow .select div:hover {
+  margin-left: 5px;
+}
+
+.DonateNow .form {
+  width: 90%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.DonateNow .form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.DonateNow .form .fieldForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.DonateNow .form .fieldForm .input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  width: 45%;
+}
+.DonateNow .form .fieldForm .input input {
+  font-size: 17px;
+  padding: 0 15px;
+  color: var(--main-color);
+}
+.DonateNow .form .fieldForm .input label {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--main-color);
+  margin-bottom: 10px;
+}
+.DonateNow .form input {
+  outline: none;
+  border-radius: 15px;
+  border: none;
+  height: 40px;
+  background-color: var(--secondary-color);
+  border-bottom: 5px solid #86d4c1;
+}
+
+.DonateNow .fieldForm.radio {
+  display: flex;
+  justify-content: center;
+}
+
+.DonateNow .radio div {
+  display: flex;
+  align-items: center;
+}
+.DonateNow .radio div input {
+  margin: 0 10px;
+}
+
+.DonateNow .form button {
+  outline: none;
+  font-size: 20px;
+  border: none;
+  background: #86d4c1;
+  border-radius: 15px;
+  height: 45px;
+  width: 30%;
+  cursor: pointer;
+  margin-top: 15px;
+  color: white;
+  transition: var(--transition-normal);
+}
+
+.DonateNow .form button:hover {
+  background-color: var(--main-color);
+}
+.DonateNow .fieldForm.radio div label {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--main-color);
+}
+.DonateNow .fieldForm.radio div input {
+  width: 15px;
+}
+.DonateNow .form .fieldForm .input.money {
+  width: 100%;
+}
+
+.DonateNow .form .fieldForm .input.bookTitle {
+  width: 100%;
+}
+
+.DonateNow .form .fieldForm .input.machineDesc {
+  width: 100%;
+}
+.DonateNow .form .fieldForm .input.otherDesc {
+  width: 100%;
+}
+
+.DonateNow .input .select-type button {
+  font-size: 17px;
+  padding: 0 15px;
+  color: var(--main-color);
+  outline: none;
+  border-radius: 15px;
+  border: none;
+  width: 100%;
+  height: 40px;
+  background-color: var(--secondary-color);
+  border-bottom: 5px solid #86d4c1;
+}
+.DonateNow .input .select-item:hover {
+  background-color: var(--secondary-color);
+}
+
+.DonateNow .select-type {
+  position: relative;
+}
+.DonateNow .select-type .select.select.type {
+  max-height: 175px;
+  overflow-y: auto;
+}
+
+.DonateNow .select-type .icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.DonateNow .select-type .select.type {
+  width: 100%;
+  top: 105%;
+  position: absolute;
+}
+
+.DonateNow .buttons {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.DonateNow .buttons .delete {
+  background-color: #f47575;
+}
+.DonateNow .buttons button {
+  width: 45%;
+}
+
+.DonateNow .donations {
+  background-color: var(--secondary-color);
+  display: flex;
+
+  height: 300px;
+  width: 100%;
+  border-radius: 15px;
+  padding: 35px;
+  gap: 35px;
+  overflow-x: auto;
+}
+.DonateNow .submitDonations {
+  width: 150%;
+  align-self: self-start;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.submitAll {
+  width: 150px;
+
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  background-color: #86d4c1;
+  height: 45px;
+  font-size: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: white;
+}
+.submitAll:hover {
+  background-color: var(--main-color);
+}
+.DonateNow .donations::-webkit-scrollbar {
+  height: 8px;
+  background-color: var(--secondary-color);
+  border-radius: 15px;
+}
+
+.DonateNow .donations::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+  border-radius: 4px;
+}
+
+.DonateNow .donations::-webkit-scrollbar-thumb:hover {
+  background-color: var(--green);
+}
+
+.DonateNow .donations .donation {
+  padding: 25px;
+  text-align: center;
+  background-color: var(--green);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.DonateNow .donations .donation .info {
+  margin-top: 20px;
+}
+.DonateNow .donations .donation p {
+  color: #2f4858;
+  margin: 5px;
+}
+.DonateNow .donations .donation h3 {
+  color: white;
+}
+
+.footer {
+  width: 100%;
+  position: relative;
+}
+.footer img {
+  height: 330px;
+  transform: translateY(25px);
+  width: 100%;
+}
+@media (max-width: 768px) {
+  body {
+    position: relative;
+  }
+  .DonateNow .donations {
+    align-self: center;
+  }
+  .DonateNow .choose {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 150px;
+  }
+  .DonateNow .submitDonations {
+    width: 100%;
+    align-self: center;
+    transform: translateX(0);
+    text-align: center;
+  }
+  .DonateNow .form {
+    width: 100%;
+  }
+}
+
+/* Profile */
+
+
+.profile {
+  position: relative;
+}
+
+.profile h3 {
+  font-size: 20px;
+  letter-spacing: 4.5px;
+}
+.profileHeader {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 5%;
+  position: absolute;
+  text-align: center;
+}
+.profileImg {
+  width: 200px;
+  border-radius: 50%;
+  height: 200px;
+  background-color: #d5f7e7;
+  overflow: hidden;
+  border: 5px solid var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.profileHeader img {
+  width: 100%;
+  transition: 0.3s;
+}
+.Home .social {
+  display: flex;
+}
+.profileHeader:hover img {
+  scale: 1.2;
+}
+
+.profile .sign.Up {
+  position: relative;
+  margin-top: 80px;
+  transform: translateX(0);
+}
+
+.profile .sign input {
+  height: 45px;
+}
+
+@media (max-width: 768px) {
+  .profile .input {
+    flex-direction: column;
+  }
+  .profile .sign.Up .input .field {
+    width: 100%;
+  }
+
+  .profile .sign form {
+    width: 80%;
+  }
+}
+
+.profile .edit {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  font-size: 20px;
+  transform: translateY(-50%);
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+
+/* Header + footer */
+
+.header {
+  overflow: hidden;
+  height: 40vh;
+  padding: 50px 10px;
+  text-align: center;
+  color: #2f4858;
+  position: relative;
+}
+
+.header img {
+  position: absolute;
+  z-index: -1;
+  top: -19px;
+  left: -16px;
+  min-width: 130%;
+  height: 33vh;
+  transform: translateY(-10px);
+  animation: mvt alternate 6s linear infinite;
+}
+@keyframes mvt {
+  0% {
+    left: -16px;
+  }
+
+  100% {
+    left: -150px;
+  }
+}
