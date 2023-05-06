@@ -4,16 +4,17 @@ import { Context } from "./Donate";
 function Donation(props) {
   const [data, setdata] = useState(props);
   const ContextValue = useContext(Context);
-  console.log(ContextValue);
+
   const [donations, setdonations] = ContextValue.donations;
   function updateDonation() {
+    
     let mainType = data.mainType;
     const [updateddonation, setupdateddonation] =
       ContextValue["updatedDonation"];
     let [State, UpdatedState] = ContextValue[mainType];
-    console.log(data);
+
     let [update, setUpdate] = ContextValue["update"];
-    console.log(update);
+
     setUpdate(true);
     let [chosen, setchosen] = ContextValue["MainType"];
     setupdateddonation(data.id);

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { BiEdit } from "react-icons/bi";
 
-import { Context } from "./UserInfo";
+import { Context } from "./Profile";
 function Input(props) {
   let [inputs, setInputs, editInputs, setEditInputs] = useContext(Context);
   function changeInfo(event) {
@@ -33,7 +33,9 @@ function Input(props) {
   }
   return (
     <div className="field">
-      <label htmlFor={props.name}>{props.label}</label>
+      <label htmlFor={props.name} className="label">
+        {props.label}
+      </label>
       <div className="inputText">
         {props.icon}
         <input
