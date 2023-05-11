@@ -4,15 +4,11 @@ import DonateNow from "./components/Donate-Now/DonateNow";
 import MyDonationPage from "./components/Pages/MyDonationPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./components/Pages/HomePage";
+import { useEffect } from "react";
+import axios from "./axios/axios";
+// const res = axios.get("/donors");
+// console.log(res);
 function App() {
-  fetch("http://localhost:8080/donors", {
-    mode: "cors",
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
-  })
-    .then((result) => result.json())
-    .then((data) => console.log(data));
   return (
     <Router>
       <Routes>

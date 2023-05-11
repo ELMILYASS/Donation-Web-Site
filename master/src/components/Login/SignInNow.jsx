@@ -17,7 +17,7 @@ const SignInNow = () => {
   return (
     <div
       className="signInNow now component"
-      style={{ transform: `translateX(${State.signInNow}%)` }}
+      style={{ transform: ` translateX(${State.signInNow}%)` }}
     >
       <div className="info">
         <h3>One of us ?</h3>
