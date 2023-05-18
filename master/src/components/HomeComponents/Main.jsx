@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import charity from '../../assets/charity.png'
 
 const Main = () => {
@@ -9,8 +10,8 @@ const Main = () => {
         </div>
         <section className='flex md:flex-row flex-col-reverse md:justify-between md:items-start items-center md:px-20 px-0 '>
             <div className='flex justify-center items-center gap-8 sm:py-20 py-6'>
-                <button type='button' className='text-textcolor font-bold bg-green2 px-10 py-2'>Donate now</button>
-                <button type='button' className='text-textcolor font-bold bg-green2 px-10 py-2'>Services</button>
+                <Link to={"/donation"} type='button' className='text-textcolor font-bold bg-green2 px-10 py-2 cursor-pointer' ><button>Donate now</button> </Link>
+                <a href='#Services' type='button' className='text-textcolor font-bold bg-green2 px-10 py-2 cursor-pointer'><button>Services</button> </a>
             </div>
             <img className='w-[500px]' src={charity} alt='charity' width={500} height={200}/>
         </section>

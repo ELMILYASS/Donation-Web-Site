@@ -4,6 +4,6 @@ export default axios.create({
 
   headers: {
     "Access-Control-Allow-Origin": "*",
-    mode: "no-cors",
+    mode: "cors",
   },
 });

@@ -23,8 +23,7 @@ const SignInNow = () => {
         <h3>One of us ?</h3>
 
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt vel
-          commodi fugit tenetur officia .
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
         <button onClick={changeState}>SIGN IN</button>
       </div>

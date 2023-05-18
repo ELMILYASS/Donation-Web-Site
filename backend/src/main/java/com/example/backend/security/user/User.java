@@ -20,7 +20,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 @Table(name = "_user")
 
-public class User implements UserDetails {
+public class  User implements UserDetails {
 
 
   @Id
@@ -39,7 +39,7 @@ public class User implements UserDetails {
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return List.of(new SimpleGrantedAuthority(this.role.name()));
+    return null;
   }
 
   @Override

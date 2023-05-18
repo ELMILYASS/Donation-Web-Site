@@ -11,9 +11,10 @@ import { FaRegAddressCard } from "react-icons/fa";
 
 import { Context } from "./Home";
 import { useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
+  let navigate = useNavigate();
   const [data, setData] = useState({
     fname: "",
     lname: "",
@@ -38,19 +39,11 @@ const SignupForm = () => {
     const res = await axios.post("/auth/register", data);
 
     if (res.status === 200) {
-      localStorage.setItem("accessToken",res.data.access_token);
-      localStorage.setItem("refreshToken",res.data.refresh_token);
-      <Navigate to='/home'/>
+      localStorage.setItem("accessToken", res.data.access_token);
+      localStorage.setItem("refreshToken", res.data.refresh_token);
+
+      navigate("/home");
     }
-    
-    // console.log(res.data.access_token);
-    // const donors = await axios.get("/donors", {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: "Bearer " + res.data.access_token,
-    //   },
-    // });
-    // console.log(donors);
   }
 
   return (

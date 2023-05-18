@@ -3,6 +3,7 @@ package com.example.backend.security.user;
 import com.example.backend.Exception.NonExistentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -39,10 +40,12 @@ public class userController {
             throw new NonExistentUser(idUser);
         }
     }
-
+    @PreAuthorize("permitAll()")
     @GetMapping("/test/user")
-    public ResponseEntity.BodyBuilder checkUser(@RequestHeader("Authorization") String headerToken){
-        return ResponseEntity.ok();
+    public ResponseEntity<String> checkUser(@RequestHeader("Authorization") String headerToken){
+        System.out.println("123");
+        this.userDetailsService.loadUserByUsername(userEmail)
+        return ResponseEntity.ok("Authenticated");
     }
 
 
