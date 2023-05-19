@@ -44,7 +44,7 @@ public class userController {
     @GetMapping("/test/user")
     public ResponseEntity<String> checkUser(@RequestHeader("Authorization") String headerToken){
         System.out.println("123");
-        this.userDetailsService.loadUserByUsername(userEmail)
+
         return ResponseEntity.ok("Authenticated");
     }
 
