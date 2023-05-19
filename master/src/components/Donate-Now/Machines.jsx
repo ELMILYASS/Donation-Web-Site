@@ -3,30 +3,40 @@ import Select from "./Select";
 import { Context } from "./Donate";
 function Machines() {
   const ContextValue = useContext(Context);
-
+  const [filled, setFilled] = ContextValue["Filled"];
   const [donations, setdonations] = ContextValue.donations;
   const [Data, setData] = ContextValue.Machines;
   const [isupdating, setisupdating] = ContextValue.update;
   const [updateddonation, setupdateddonation] = ContextValue["updatedDonation"];
   function preventDefault(e) {
     e.preventDefault();
-    setdonations((prev) => {
-      return [
-        ...prev,
-        {
-          mainType: "Machines",
-          id: donations.length + 1,
-          infos: {
-            type: Data.type,
-            brand: Data.brand,
-            description: Data.description,
+
+    const absentField = Object.values(Data)
+      .map((e) => e.trim())
+      .includes("");
+
+    if (absentField) {
+      setFilled(true);
+    } else {
+      setFilled(false);
+      setdonations((prev) => {
+        return [
+          ...prev,
+          {
+            mainType: "Machines",
+            id: donations.length + 1,
+            infos: {
+              type: Data.type,
+              brand: Data.brand,
+              description: Data.description,
+            },
           },
-        },
-      ];
-    });
-    setData((prev) => {
-      return { ...prev, brand: "", description: "" };
-    });
+        ];
+      });
+      setData((prev) => {
+        return { ...prev, brand: "", description: "" };
+      });
+    }
   }
   function Update(e) {
     e.preventDefault();

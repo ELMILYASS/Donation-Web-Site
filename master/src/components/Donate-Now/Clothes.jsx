@@ -7,27 +7,38 @@ function Clothes() {
   const [isupdating, setisupdating] = ContextValue.update;
   const [updateddonation, setupdateddonation] = ContextValue["updatedDonation"];
   const [Data, setData] = ContextValue.Clothes;
+  const [filled, setFilled] = ContextValue["Filled"];
   function preventDefault(e) {
     e.preventDefault();
-    setdonations((prev) => {
-      return [
-        ...prev,
-        {
-          mainType: "Clothes",
-          id: donations.length + 1,
-          infos: {
-            type: Data.type,
-            gender: Data.gender,
-            size: Data.size,
-            age: Data.age,
-            quantity: Data.quantity,
+
+    const absentField = Object.values(Data)
+      .map((e) => e.trim())
+      .includes("");
+
+    if (absentField) {
+      setFilled(true);
+    } else {
+      setFilled(false);
+      setdonations((prev) => {
+        return [
+          ...prev,
+          {
+            mainType: "Clothes",
+            id: donations.length + 1,
+            infos: {
+              type: Data.type,
+              gender: Data.gender,
+              size: Data.size,
+              age: Data.age,
+              quantity: Data.quantity,
+            },
           },
-        },
-      ];
-    });
-    setData((prev) => {
-      return { ...prev, age: "", quantity: "", gender: "male" };
-    });
+        ];
+      });
+      setData((prev) => {
+        return { ...prev, age: "", quantity: "", gender: "male" };
+      });
+    }
   }
   function Update(e) {
     e.preventDefault();

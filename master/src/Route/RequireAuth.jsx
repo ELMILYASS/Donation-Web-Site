@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation, Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "../axios/axios";
-import jwt_decode from 'jsonwebtoken/decode';
+// import jwt_decode from 'jsonwebtoken/decode';
 import Home from "../components/Login/Home";
 import { useUser } from "../contexte/UserContext";
 const RequireAuth = () => {
@@ -35,7 +35,7 @@ const RequireAuth = () => {
           navigate("/home");
         }
         setValid(true);
-        setUser(decodeToken(access_token))
+        // setUser(decodeToken(access_token))
       }
     }
   };

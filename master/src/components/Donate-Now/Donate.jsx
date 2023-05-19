@@ -52,13 +52,15 @@ function Donate() {
     description: "",
   });
   let [DataMoney, setDataMoney] = useState({
-    type: "Money",
     money: "",
   });
   let [isupdating, setisupdating] = useState(false);
   let [updateddonation, setupdateddonation] = useState(0);
+
+  let [filled, setFilled] = useState(false);
   return (
     <div className="Donate field ">
+      {filled && <span className="notFilled">All Fields Are Required</span>}
       <button className="select-item" onClick={displayChoices}>
         <span>{chosen}</span>
 
@@ -107,6 +109,7 @@ function Donate() {
           Clothes: [DataClothes, setDataClothes],
           Others: [DataOthers, setDataOthers],
           Money: [DataMoney, setDataMoney],
+          Filled: [filled, setFilled],
         }}
       >
         <div className="choose">

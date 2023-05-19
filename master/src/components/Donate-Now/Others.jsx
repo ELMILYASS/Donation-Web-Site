@@ -8,21 +8,32 @@ function Others() {
   const [Data, setData] = ContextValue.Others;
   const [isupdating, setisupdating] = ContextValue.update;
   const [updateddonation, setupdateddonation] = ContextValue["updatedDonation"];
+  const [filled, setFilled] = ContextValue["Filled"];
   function preventDefault(e) {
     e.preventDefault();
-    setdonations((prev) => {
-      return [
-        ...prev,
-        {
-          mainType: "Others",
-          id: donations.length + 1,
-          infos: { type: Data.type, description: Data.description },
-        },
-      ];
-    });
-    setData((prev) => {
-      return { ...prev, description: "" };
-    });
+
+    const absentField = Object.values(Data)
+      .map((e) => e.trim())
+      .includes("");
+
+    if (absentField) {
+      setFilled(true);
+    } else {
+      setFilled(false);
+      setdonations((prev) => {
+        return [
+          ...prev,
+          {
+            mainType: "Others",
+            id: donations.length + 1,
+            infos: { type: Data.type, description: Data.description },
+          },
+        ];
+      });
+      setData((prev) => {
+        return { ...prev, description: "" };
+      });
+    }
   }
   function Update(e) {
     e.preventDefault();

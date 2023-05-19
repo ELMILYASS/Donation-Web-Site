@@ -7,9 +7,20 @@ function Books() {
   const [Data, setData] = ContextValue.Books;
   const [isupdating, setisupdating] = ContextValue.update;
   const [updateddonation, setupdateddonation] = ContextValue["updatedDonation"];
+  const [filled, setFilled] = ContextValue["Filled"];
   console.log(Data);
   function preventDefault(e) {
     e.preventDefault();
+    
+    const absentField = Object.values(Data)
+    .map((e) => e.trim())
+    .includes("");
+
+  if (absentField) {
+    setFilled(true);
+  }
+   else{
+    setFilled(false);
     setdonations((prev) => {
       return [
         ...prev,
@@ -23,6 +34,7 @@ function Books() {
     setData((prev) => {
       return { ...prev, age: "", title: "" };
     });
+   }
   }
   function Update(e) {
     e.preventDefault();

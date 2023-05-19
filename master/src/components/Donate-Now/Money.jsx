@@ -3,6 +3,7 @@ import { Context } from "./Donate";
 function Money() {
   const ContextValue = useContext(Context);
   const [donations, setdonations] = ContextValue.donations;
+  const [filled, setFilled] = ContextValue["Filled"];
   const [Data, setData] = ContextValue.Money;
   const [isupdating, setisupdating] = ContextValue.update;
   const [updateddonation, setupdateddonation] = ContextValue["updatedDonation"];
@@ -24,19 +25,29 @@ function Money() {
   }
   function preventDefault(e) {
     e.preventDefault();
-    setdonations((prev) => {
-      return [
-        ...prev,
-        {
-          mainType: "Money",
-          id: donations.length + 1,
-          infos: { type: Data.type, money: Data.money },
-        },
-      ];
-    });
-    setData((prev) => {
-      return { ...prev, money: "" };
-    });
+
+    const absentField = Object.values(Data)
+      .map((e) => e.trim())
+      .includes("");
+
+    if (absentField) {
+      setFilled(true);
+    } else {
+      setFilled(false);
+      setdonations((prev) => {
+        return [
+          ...prev,
+          {
+            mainType: "Money",
+            id: donations.length + 1,
+            infos: { type: Data.type, money: Data.money },
+          },
+        ];
+      });
+      setData((prev) => {
+        return { ...prev, money: "" };
+      });
+    }
   }
   function handleChange(e) {
     setData((pre) => {

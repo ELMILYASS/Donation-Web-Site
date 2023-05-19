@@ -7,7 +7,6 @@ function Donation(props) {
 
   const [donations, setdonations] = ContextValue.donations;
   function updateDonation() {
-    
     let mainType = data.mainType;
     const [updateddonation, setupdateddonation] =
       ContextValue["updatedDonation"];
@@ -22,17 +21,19 @@ function Donation(props) {
     setchosen(donations[data.id - 1].mainType);
     UpdatedState(donations[data.id - 1].infos);
   }
+
   let info = [];
   for (var key in props.infos) {
     info.push(<p>{props.infos[key]}</p>);
   }
-
   return (
     <div className="donation" onClick={updateDonation}>
-      <h3>Donation {data.id}</h3>
-      <p>{data.mainType}</p>
+      
+        <h3>Donation {data.id}</h3>
+        <p>{data.mainType}</p>
 
-      <div className="info">{info}</div>
+        <div className="info">{info.slice(0, 3)}</div>
+     
     </div>
   );
 }

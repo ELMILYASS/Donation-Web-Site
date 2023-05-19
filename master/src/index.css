@@ -325,6 +325,11 @@ height: 100vh !important; */
 .DonateNow {
   position: relative;
 }
+
+.DonateNow .notFilled {
+  position: absolute;
+  top: -35px;
+}
 .DonateNow .choose {
   width: 100%;
   display: flex;
@@ -376,7 +381,7 @@ height: 100vh !important; */
     width: 100%;
   }
   .DonateNow .section .Donate {
-    margin-top: 50px;
+    margin-top: 100px;
   }
   .DonateNow .form .fieldForm .input {
     width: 100% !important;
@@ -414,7 +419,7 @@ height: 100vh !important; */
   background-color: var(--secondary-color);
   width: 220px;
   border-radius: 15px;
-  top: 5%;
+  top: 50px;
   display: none;
   position: absolute;
   padding: 5px;
@@ -471,7 +476,7 @@ height: 100vh !important; */
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
-
+  justify-content: space-between;
   width: 45%;
 }
 .DonateNow .form .fieldForm .input input {
@@ -648,16 +653,18 @@ height: 100vh !important; */
 }
 
 .DonateNow .donations .donation {
-  padding: 25px;
+  padding: 40px;
   text-align: center;
   background-color: var(--green);
   border-radius: 20px;
   cursor: pointer;
+  flex-shrink: 0;
+  width: 165px;
 }
 
-.DonateNow .donations .donation .info {
+/* .DonateNow .donations .donation .info {
   margin-top: 20px;
-}
+} */
 .DonateNow .donations .donation p {
   color: #2f4858;
   margin: 5px;
@@ -671,9 +678,9 @@ height: 100vh !important; */
   position: relative;
 }
 .footer img {
-  height: 330px;
+  /* height: 330px; */
   transform: translateY(25px);
-  width: 100%;
+  /* width: 100%; */
 }
 @media (max-width: 768px) {
   body {
@@ -704,20 +711,24 @@ height: 100vh !important; */
 
 .header {
   overflow: hidden;
-  height: 40vh;
-  padding: 50px 10px;
+  height: 28vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: #2f4858;
   position: relative;
 }
-
+.header h1 {
+  margin-top: -55px;
+}
 .header img {
   position: absolute;
   z-index: -1;
-  top: -19px;
+
   left: -16px;
   min-width: 130%;
-  height: 33vh;
+  height: 30vh;
   transform: translateY(-10px);
   animation: mvt alternate 6s linear infinite;
 }
@@ -727,7 +738,7 @@ height: 100vh !important; */
   }
 
   100% {
-    left: -150px;
+    left: -10%;
   }
 }
 
@@ -759,7 +770,8 @@ height: 100vh !important; */
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+
+  margin: 0 auto 20px;
 }
 .profileHeader img {
   width: 100%;
@@ -774,7 +786,7 @@ height: 100vh !important; */
 
 .profile .sign.Up {
   position: relative;
-  margin-top: 80px;
+  margin-top: 130px;
   transform: translateX(0);
 }
 
@@ -785,7 +797,9 @@ height: 100vh !important; */
 
   color: rgba(47, 72, 88, 0.61);
 }
-
+.profile .sign form {
+  margin-top: 20px;
+}
 @media (max-width: 768px) {
   .profile .input {
     flex-direction: column;
