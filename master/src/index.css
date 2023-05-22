@@ -423,7 +423,29 @@ height: 100vh !important; */
   display: none;
   position: absolute;
   padding: 5px;
+  scroll-behavior: smooth;
+  z-index: 1;
 }
+
+.select::-webkit-scrollbar {
+  width: 7px; /* Set the width of the scrollbar */
+}
+
+.select::-webkit-scrollbar-thumb {
+  background-color: var(
+    --main-color
+  ); /* Set the color of the scrollbar thumb */
+  border-radius: 5px;
+}
+
+.select::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Set the color of the scrollbar thumb on hover */
+}
+/*
+.select::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Set the color of the scrollbar track 
+}
+*/
 .Donate .select:not(.type) {
   z-index: 1;
 }

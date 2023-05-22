@@ -13,6 +13,7 @@ import Donation from "./Donation";
 export const Context = createContext();
 
 function Donate() {
+
   let [isHide, setisHide] = useState(true);
   let [chosen, setChosen] = useState("Clothes");
   function displayChoices() {
@@ -58,6 +59,7 @@ function Donate() {
   let [updateddonation, setupdateddonation] = useState(0);
 
   let [filled, setFilled] = useState(false);
+  console.log(Donations);
   return (
     <div className="Donate field ">
       {filled && <span className="notFilled">All Fields Are Required</span>}

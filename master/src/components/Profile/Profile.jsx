@@ -2,8 +2,10 @@ import React from "react";
 import Header from "../Donate-Now/Header";
 import Footer from "../Donate-Now/Footer";
 import ProfileHeader from "./ProfileHeader";
+import Navbar from "../HomeComponents/Navbar";
 import UserInfo from "./UserInfo";
 import { createContext, useState, useEffect } from "react";
+
 export const Context = createContext();
 function Profile() {
   let [inputs, setInputs] = useState({
@@ -48,6 +50,7 @@ function Profile() {
   }, []);
   return (
     <div className="profile">
+      <Navbar />
       <Context.Provider value={[inputs, setInputs, editInputs, setEditInputs]}>
         <Header />
         <ProfileHeader username={inputs.uname} />

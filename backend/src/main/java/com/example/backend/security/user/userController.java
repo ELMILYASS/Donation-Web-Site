@@ -1,9 +1,15 @@
 package com.example.backend.security.user;
 
 import com.example.backend.Exception.NonExistentUser;
+import com.example.backend.security.config.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -40,12 +46,18 @@ public class userController {
             throw new NonExistentUser(idUser);
         }
     }
+
+    private final JwtService jwtService = new JwtService();
+
+
     @PreAuthorize("permitAll()")
     @GetMapping("/test/user")
-    public ResponseEntity<String> checkUser(@RequestHeader("Authorization") String headerToken){
-        System.out.println("123");
+    public String checkUser(@RequestHeader("Authorization") String authHeader){
 
-        return ResponseEntity.ok("Authenticated");
+        String jwt = authHeader.substring(7);
+
+
+        return "Authentificated";
     }
 
 

@@ -14,7 +14,6 @@ function HomePage() {
     signInNow: 100,
     signUpNow: 0,
     cercle: -70,
-   
   });
 
   return (
@@ -24,11 +23,12 @@ function HomePage() {
           className="cercle"
           style={{ transform: `translate(${state.cercle}%,-50%)` }}
         ></div>
-       
+
         <SignUpNow />
         <SigninForm />
         <SignupForm />
         <SignInNow />
+     
       </Context.Provider>
     </div>
   );

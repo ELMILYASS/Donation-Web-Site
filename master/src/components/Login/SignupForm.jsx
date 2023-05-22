@@ -16,8 +16,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 const SignupForm = () => {
   let navigate = useNavigate();
   const [data, setData] = useState({
-    fname: "",
-    lname: "",
+    firstname: "",
+    lastname: "",
     phone: "",
     username: "",
     address: "",
@@ -36,6 +36,7 @@ const SignupForm = () => {
 
   async function handleSignUp(event) {
     event.preventDefault();
+    
     const res = await axios.post("/auth/register", data);
 
     if (res.status === 200) {
@@ -59,9 +60,9 @@ const SignupForm = () => {
 
             <input
               type="text"
-              name="fname"
+              name="firstname"
               placeholder="First name"
-              value={data.fname}
+              value={data.firstname}
               onChange={handleChange}
               required
             />
@@ -71,9 +72,9 @@ const SignupForm = () => {
 
             <input
               type="text"
-              name="lname"
+              name="lastname"
               placeholder="Last name"
-              value={data.lname}
+              value={data.lastname}
               onChange={handleChange}
               required
             />

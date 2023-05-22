@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/auth")
@@ -21,7 +22,7 @@ public class AuthenticationController {
   public ResponseEntity<AuthenticationResponse> register(
       @RequestBody User user
   ) {
-    System.out.println("hello");
+   user.setCreatedAt(new Date());
     return ResponseEntity.ok(service.register(user));
   }
   @PostMapping("/authenticate")

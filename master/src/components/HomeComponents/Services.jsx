@@ -4,7 +4,7 @@ import Service from './Service'
 
 const Services = () => {
   return (
-    <div>
+    <div >
         <Title title='Services' color='bg-green2'/>
 
         <Service title='Money' color='bg-green4'/>
