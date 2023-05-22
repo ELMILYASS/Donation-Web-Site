@@ -21,6 +21,7 @@ function UserInfo() {
       },
     });
   }
+
   return (
     <div className="sign Up component">
       <form action="">

@@ -4,6 +4,7 @@ import Footer from "../Donate-Now/Footer";
 import ProfileHeader from "./ProfileHeader";
 import UserInfo from "./UserInfo";
 import { createContext, useState, useEffect } from "react";
+import Navbar from "../HomeComponents/Navbar";
 import { useUser } from "../../contexte/UserContext";
 import axios from "../../axios/axios";
 export const Context = createContext();
@@ -27,7 +28,6 @@ function Profile() {
       email: res.data.email,
       password: res.data.password,
     });
-   
   };
   useEffect(() => {
     getUserInfo();
@@ -41,6 +41,7 @@ function Profile() {
     email: "",
     password: "",
   });
+  console.log(inputs);
   let [editInputs, setEditInputs] = useState({
     firstname: true,
     lastname: true,
@@ -74,6 +75,7 @@ function Profile() {
   }, []);
   return (
     <div className="profile">
+      <Navbar />
       <Context.Provider value={[inputs, setInputs, editInputs, setEditInputs]}>
         <Header />
         <ProfileHeader user_name={inputs.user_name} />

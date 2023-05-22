@@ -18,14 +18,15 @@ const SignupForm = () => {
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
+
     phone: "",
-    username: "",
+    user_name: "",
     address: "",
     email: "",
     password: "",
     role: "Donor",
   });
-
+  console.log(data);
   const [State, setState] = useContext(Context);
 
   function handleChange(event) {
@@ -86,10 +87,10 @@ const SignupForm = () => {
 
             <input
               type="text"
-              placeholder="Username"
-              name="username"
+              placeholder="user_name"
+              name="user_name"
               onChange={handleChange}
-              value={data.username}
+              value={data.user_name}
               required
             />
           </div>
@@ -141,7 +142,30 @@ const SignupForm = () => {
           />
           <BiHide className="icon" />
         </div>
-
+        <div className="Roleradio">
+          <div>
+            <input
+              type="radio"
+              name="role"
+              id="donor"
+              value="Donor"
+              checked={data.role == "Donor"}
+              onChange={handleChange}
+            />
+            <label htmlFor="donor">Donor</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="role"
+              id="needy"
+              value="Needy"
+              checked={data.role == "Needy"}
+              onChange={handleChange}
+            />
+            <label htmlFor="needy">Needy</label>
+          </div>
+        </div>
         <input type="submit" value="SIGN UP" />
       </form>
     </div>

@@ -90,6 +90,18 @@
   }
 }
 
+.Roleradio {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.Roleradio div {
+  padding: 0 10px;
+}
+
+.Roleradio div label {
+  margin-left: 5px;
+}
 .Home .component {
   z-index: 2;
   width: 50%;
@@ -100,7 +112,7 @@
 .Home .component form {
   width: 75%;
 }
-.Home input {
+.Home input:not([type="radio"]) {
   color: var(--main-color);
 }
 .Home input:focus {
@@ -228,7 +240,7 @@
 .sign form {
   width: 65%;
 }
-.sign form input {
+.sign form input:not([type="radio"]) {
   height: 40px;
   width: 100%;
   font-size: 16px;

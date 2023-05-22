@@ -1,15 +1,11 @@
 package com.example.backend.security.user;
 
 import com.example.backend.Exception.NonExistentUser;
-import com.example.backend.security.auth.NotFoundUserException;
-import com.example.backend.security.config.JwtService;
-import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -17,13 +13,18 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+
 @CrossOrigin(origins={"http://127.0.0.1:5173/","http://localhost:5173/"})
 public class userController {
     @Autowired
     private UserRepository userRepository ;
 
 
-    public userController() {
+    @Autowired
+    private final PasswordEncoder passwordEncoder;
+
+    public userController(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
     }
 
     @PostMapping("/user")
@@ -84,8 +85,9 @@ public class userController {
         updateUser.setLastname(user.getLastname());
         updateUser.setPhone(user.getPhone());
         updateUser.setAddress(user.getAddress());
-        updateUser.setPassword(user.getPassword());
-        System.out.println(user.getUser_name());
+        updateUser.setPassword(passwordEncoder.encode(user.getPassword()));
+
+
         updateUser.setUser_name(user.getUser_name());
         this.userRepository.save(updateUser);
 

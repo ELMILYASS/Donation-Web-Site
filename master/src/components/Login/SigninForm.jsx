@@ -1,16 +1,46 @@
 "use client";
-import React from "react";
-
+import React, { useState } from "react";
+import axios from "../../axios/axios";
 import { Context } from "./Home";
 import { useContext } from "react";
 import { AiFillLock, AiOutlineMail } from "react-icons/ai";
 import { BiHide } from "react-icons/bi";
 import { FaLinkedinIn, FaFacebookF } from "react-icons/fa";
 import { BsGoogle, BsTwitter } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const SigninForm = () => {
+  const Navigate = useNavigate();
   const [State, setState] = useContext(Context);
+  const [userInfo, setuserInfo] = useState({
+    email: "",
+    password: "",
+  });
+  function handleChange(e) {
+    setuserInfo((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  }
 
+  async function handleSignIn(event) {
+    event.preventDefault();
+    const res = await axios.post("/auth/authenticate", userInfo, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        mode: "cors",
+      },
+    });
+
+    if (res.status === 200) {
+      localStorage.setItem("accessToken", res.data.access_token);
+      localStorage.setItem("refreshToken", res.data.refresh_token);
+
+      Navigate("/home");
+    }
+  }
   return (
     <div
       className="sign In component"
@@ -21,17 +51,25 @@ const SigninForm = () => {
         <div className="field">
           <AiOutlineMail className="icon" />
 
-          <input type="text" name="email" placeholder="Enter your email ..." />
+          <input
+            type="text"
+            name="email"
+            placeholder="Enter your email ..."
+            value={userInfo.email}
+            onChange={handleChange}
+          />
         </div>
         <div className="field ">
           <input
             type="password"
             name="password"
             placeholder="Enter you password"
+            value={userInfo.password}
+            onChange={handleChange}
           />
           <BiHide className="icon" />
         </div>
-        <input type="submit" value="SIGN IN" />
+        <input type="submit" value="SIGN IN" onClick={handleSignIn} />
       </form>
       <p>Or Sign up with social platforms</p>
       <div className="social">

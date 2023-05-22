@@ -7,7 +7,7 @@ function ProfileHeader(props) {
       <div className="profileImg">
         <img src={img} alt="" />
       </div>
-      <h3>{props.username}</h3>
+      <h3>{props.user_name}</h3>
     </div>
   );
 }

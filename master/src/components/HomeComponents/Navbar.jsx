@@ -14,9 +14,9 @@ const Navbar = () => {
             <Link to="/home" className='font-bold text-xl text-green1'><h3>I.L.A.B</h3></Link>
             <div className='flex gap-8 items-center'>
                 <ul className='flex items-center gap-8 justify-center'>
-                    <li ><a href="#Services" className='text-[16px] font-medium text-green1'>Services</a></li>
-                    <li ><a href="#Testimonial" className='text-[16px] font-medium text-green1'>Testimonial</a></li>
-                    <li ><a href="#Contact Us" className='text-[16px] font-medium text-green1'>Contact Us</a></li>
+                    <li ><a href="home#Services" className='text-[16px] font-medium text-green1'>Services</a></li>
+                    <li ><a href="home#Testimonial" className='text-[16px] font-medium text-green1'>Testimonial</a></li>
+                    <li ><a href="home#Contact Us" className='text-[16px] font-medium text-green1'>Contact Us</a></li>
                 </ul>
                 <Profile menu={menu} setMenu={setMenu}/>
             </div>
@@ -26,9 +26,9 @@ const Navbar = () => {
             <div className={` flex ${showMenu?'translate-y-[30%]':'translate-y-[-100%]'} z-30 h-[30%] inset-x-0 transition-all duration-500  flex-col justify-center gap-6 items-center  bg-green2 fixed`}>
                 <Link to="/" className='font-bold text-xl text-green3'><h3>I.L.A.B</h3></Link>
                 <ul className='flex flex-row items-start gap-6 justify-center'>
-                    <li className='text-[16px] font-medium text-green3 text-start' ><a href="#Services" >Services</a></li>
-                    <li className='text-[16px] font-medium text-green3 text-start' ><a href="#Testimonial" >Testimonial</a></li>
-                    <li className='text-[16px] font-medium text-green3 text-start' ><a href="#Contact Us" >Contact Us</a></li>
+                    <li className='text-[16px] font-medium text-green3 text-start' ><a href="home#Services" >Services</a></li>
+                    <li className='text-[16px] font-medium text-green3 text-start' ><a href="home#Testimonial" >Testimonial</a></li>
+                    <li className='text-[16px] font-medium text-green3 text-start' ><a href="home#Contact Us" >Contact Us</a></li>
                 </ul>
 
                 {

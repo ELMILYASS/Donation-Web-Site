@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class AuthenticationController {
 
   private final AuthenticationService service;
 
+  @PreAuthorize("permitAll()")
   @PostMapping("/register")
   public ResponseEntity<AuthenticationResponse> register(
       @RequestBody User user
