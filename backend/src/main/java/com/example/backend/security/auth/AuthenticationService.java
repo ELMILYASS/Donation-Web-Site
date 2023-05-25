@@ -41,18 +41,19 @@ public class AuthenticationService {
         .build();
   }
 
-  public AuthenticationResponse authenticate(AuthenticationRequest request) {
+  public AuthenticationResponse authenticate(AuthenticationRequest request) throws NotFoundUserException {
    try{
-
+    String email = request.getEmail();
+    repository.findByEmail(email).orElseThrow(()->new NotFoundUserException("Email is not correct"));
      authenticationManager.authenticate(
-
              new UsernamePasswordAuthenticationToken(
                      request.getEmail(),
                      request.getPassword()
              )
      );
    }catch(Exception e){
-       throw new NotFoundUserException("Incorrect username or password");
+       String message = e.getMessage()=="Email is not correct" ?"Email is not correct":"Password is not correct";
+       throw new NotFoundUserException(message);
    }
 
     var user = repository.findByEmail(request.getEmail())

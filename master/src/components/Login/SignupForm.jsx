@@ -14,6 +14,7 @@ import { useContext } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
+ 
   let navigate = useNavigate();
   const [data, setData] = useState({
     firstname: "",
@@ -53,6 +54,7 @@ const SignupForm = () => {
       style={{ transform: `translateX(${State.signUp}%)` }}
     >
       <h1>Sign up</h1>
+
       <form action="submit" onSubmit={handleSignUp}>
         <div className="input">
           <div className="field">

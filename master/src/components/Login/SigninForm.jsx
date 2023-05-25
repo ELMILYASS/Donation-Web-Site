@@ -10,6 +10,7 @@ import { BsGoogle, BsTwitter } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 const SigninForm = () => {
+  const [isCorrect, setisCorrect] = useState("");
   const Navigate = useNavigate();
   const [State, setState] = useContext(Context);
   const [userInfo, setuserInfo] = useState({
@@ -27,19 +28,22 @@ const SigninForm = () => {
 
   async function handleSignIn(event) {
     event.preventDefault();
-    const res = await axios.post("/auth/authenticate", userInfo, {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        mode: "cors",
-      },
-    });
 
-    if (res.status === 200) {
-      localStorage.setItem("accessToken", res.data.access_token);
-      localStorage.setItem("refreshToken", res.data.refresh_token);
-
-      Navigate("/home");
-    }
+    await axios
+      .post("/auth/authenticate", userInfo, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          mode: "cors",
+        },
+      })
+      .then((res) => {
+        localStorage.setItem("accessToken", res.data.access_token);
+        localStorage.setItem("refreshToken", res.data.refresh_token);
+        Navigate("/home");
+      })
+      .catch((e) => {
+        setisCorrect(e.response.data.errorMessage);
+      });
   }
   return (
     <div
@@ -47,6 +51,7 @@ const SigninForm = () => {
       style={{ transform: `translateX(${State.signIn}%)` }}
     >
       <h1>Sign in</h1>
+      {isCorrect != "" && <span className="isCorrect">{isCorrect}</span>}
       <form>
         <div className="field">
           <AiOutlineMail className="icon" />
